@@ -1,0 +1,33 @@
+"use server"
+
+import { cookies } from "next/headers";
+import { db } from "../firebase/config";
+import { doc, getDoc } from "firebase/firestore";
+
+export const loginUser = async(userId: string) => {
+    cookies().set('token', userId)
+
+    const userRef = doc(db, "user" , userId)
+    let userDoc = await getDoc(userRef)
+    let userData = userDoc.data()
+
+    if(userData){
+        cookies().set('role', userData.role)
+    }
+}
+
+export const userLoggedIn = () => {
+    let result = cookies().has('token')
+    return result
+}
+
+export const clearToken = () => {
+    cookies().delete('token')
+    cookies().delete('role')
+}
+
+export const isAdmin = () => {
+    let role = cookies().get('role')?.value
+    let result = role === "admin"
+    return result
+}
