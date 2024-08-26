@@ -3,6 +3,8 @@ import { getData } from "../utils/thingsBoardAPI";
 
 function IoTMainDisplay({ pond }: { pond: any }) {
     const [tempFeed, setTempFeed] = useState<any>()
+    const [tempStatus, setTempStatus] = useState<any>()
+
 
     useEffect(() => {
         if (!pond.isActive) {
@@ -13,6 +15,14 @@ function IoTMainDisplay({ pond }: { pond: any }) {
             const interval = setInterval(() => {
                 getData(pond.API).then(data => {
                     setTempFeed(data.temperature);
+
+                    if (data.temperature[0].value > (pond.species.temperature - 1) && data.temperature[0].value < (pond.species.temperature + 1)) {
+                        setTempStatus("progress-success");
+                    } else if (data.temperature[0].value > (pond.species.temperature - 3) && data.temperature[0].value < (pond.species.temperature + 3)) {
+                        setTempStatus("progress-warning");
+                    } else {
+                        setTempStatus("progress-error");
+                    }
                 });
             }, pond.refreshRate);
 
@@ -24,11 +34,11 @@ function IoTMainDisplay({ pond }: { pond: any }) {
         return (
             <div className="bg-base-200 rounded-md p-4 flex flex-col justify-between">
                 <p className="font-bold mb-2">Temperature: <span className="font-normal">{tempFeed ? tempFeed[0].value : "--"}</span></p>
-                <progress className="progress w-full mb-5" value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
+                <progress className={`progress w-full mb-5 ${tempStatus}`} value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
                 <p className="font-bold mb-2">pH: <span className="font-normal">{tempFeed ? tempFeed[0].value : "--"}</span></p>
-                <progress className="progress w-full mb-5" value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
+                <progress className={`progress w-full mb-5 ${tempStatus}`} value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
                 <p className="font-bold mb-2">DO: <span className="font-normal">{tempFeed ? tempFeed[0].value : "--"}</span></p>
-                <progress className="progress w-full mb-5" value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
+                <progress className={`progress w-full mb-5 ${tempStatus}`} value={tempFeed ? tempFeed[0].value : "0"} max="35"></progress>
             </div>
         )
     }

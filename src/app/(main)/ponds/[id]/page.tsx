@@ -76,7 +76,7 @@ function PondDetails({ params: { id } }: { params: any }) {
                 </div>
                 <div className="grid grid-cols-3 md:grid-cols-6 mt-4 gap-4">
                     <div className="col-span-3 bg-base-200 rounded-md p-5">
-                        <p className="font-bold text-lg">Species: <span className="font-normal">{pond.species.name}</span></p>
+                        <p className="font-bold text-lg">Species: <span className="font-normal tooltip" data-tip={`temperature: ${pond.species.temperature}, ph: ${pond.species.pH}, DO: ${pond.species.DO}`}>{pond.species.name}</span></p>
                         <p className="font-bold text-lg">Capacity: <span className="font-normal">{pond.capacity}</span></p>
                     </div>
                     <div className="col-span-1 bg-base-200 rounded-md p-3">
