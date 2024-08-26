@@ -4,7 +4,9 @@ import { cookies } from "next/headers";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
 
+const router = useRouter()
 export const loginUser = async(userId: string) => {
     cookies().set('token', userId)
 
@@ -17,9 +19,10 @@ export const loginUser = async(userId: string) => {
     }
     let role = cookies().get('role')?.value
     if (isAdmin()) {
-        return redirect("/admin")
+        router.push("/admin")
+    }else{
+        router.push("/")
     }
-    return redirect("/")
 }
 
 export const userLoggedIn = () => {
@@ -30,7 +33,7 @@ export const userLoggedIn = () => {
 export const clearToken = async() => {
     cookies().delete('token')
     cookies().delete('role')
-    return redirect("/")
+    router.push("/")
 }
 
 export const isAdmin = () => {
