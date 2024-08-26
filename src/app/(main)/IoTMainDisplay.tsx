@@ -18,7 +18,6 @@ function IoTMainDisplay({ pond }: { pond: any }) {
         if (pond?.API && pond.isActive) {
             const interval = setInterval(() => {
                 getData(pond.API).then(data => {
-                    console.log(data)
                     setTempFeed(data.temperature);
                     setpHFeed(data.pH);
                     setDOFeed(data.DO);
