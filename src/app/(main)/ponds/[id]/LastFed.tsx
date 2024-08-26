@@ -11,19 +11,19 @@ function LastFed({ pond }: { pond: any }) {
                 await setDoc(doc(db, "ponds", pond.id), {
                     lastFed: serverTimestamp()
                 }, { merge: true })
-                document.getElementById('close-last-fed')?.submit()
+                document.getElementById('close-last-fed')?.closest('form')?.submit()
             } catch (e: any) {
                 console.error(e.message);
             }
         } else {
-            document.getElementById('close-last-fed')?.submit()
+            document.getElementById('close-last-fed')?.closest('form')?.submit()
             toast.warning("You need to activate the pond first")
         }
     }
 
     return (
         <>
-            <button className="btn btn-ghost p-2 h-full w-full text-center" onClick={() => document.getElementById('last-fed').showModal()}>
+            <button className="btn btn-ghost p-2 h-full w-full text-center" onClick={() => document.getElementById('last-fed')?.showModal()}>
                 <div>
                     <p className="font-bold text-lg">Last Fed:</p>
                     <p className="text-lg">{pond.lastFed ? moment(pond.lastFed.toDate()).format('h : mm a') : "-- : --"}</p>
@@ -34,7 +34,7 @@ function LastFed({ pond }: { pond: any }) {
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Mark this time as last fed?</h3>
                     <div className="flex justify-end gap-3">
-                        <button className="btn" type="button" onClick={() => document.getElementById('close-last-fed')?.submit()}>
+                        <button className="btn" type="button" onClick={() => document.getElementById('close-last-fed')?.closest('form')?.submit()}>
                             Cancel
                         </button>
                         <button className="btn btn-primary" type="button" onClick={() => handleLastFed()}>

@@ -40,7 +40,7 @@ function FishStats({ pond }: { pond: any }) {
                 died: pond.record.died + fishDied
             }, { merge: true })
             toast.success("Record updated", { description: `${pond.name}'s record updated` })
-            document.getElementById('close-fisf-died')?.submit()
+            document.getElementById('close-fisf-died')?.closest('form')?.submit()
             setFishDied(0)
         } catch (e: any) {
             console.error(e.message);
@@ -50,7 +50,7 @@ function FishStats({ pond }: { pond: any }) {
     return (
         (!pond.isActive ? (
             <>
-                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => document.getElementById("fish-in").showModal()}>
+                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => document.getElementById("fish-in")?.showModal()}>
                     <p className="font-bold text-lg">Activate pond?</p >
                 </button >
 
@@ -65,7 +65,7 @@ function FishStats({ pond }: { pond: any }) {
                                 </div>
                             </div>
                             <div className="flex justify-end gap-3 mt-5">
-                                <button className="btn" type="button" onClick={() => document.getElementById('close-fish-in')?.submit()}>
+                                <button className="btn" type="button" onClick={() => document.getElementById('close-fish-in')?.closest('form')?.submit()}>
                                     Cancel
                                 </button>
                                 <button className="btn btn-primary">
@@ -88,7 +88,7 @@ function FishStats({ pond }: { pond: any }) {
                     </div>
                 </div >
                 <div className="col-span-1 bg-error rounded-md p-3">
-                    <button className="btn btn-ghost h-full w-full text-center" onClick={() => document.getElementById('fisf-died').showModal()}>
+                    <button className="btn btn-ghost h-full w-full text-center" onClick={() => document.getElementById('fisf-died')?.showModal()}>
                         <div>
                             <p className="font-bold text-lg">Died:</p>
                             <p className="text-lg">{pond.record.died}</p>
@@ -109,7 +109,7 @@ function FishStats({ pond }: { pond: any }) {
                                 </div>
                             </div>
                             <div className="flex justify-end gap-3 mt-5">
-                                <button className="btn" type="button" onClick={() => document.getElementById('close-fisf-died')?.submit()}>
+                                <button className="btn" type="button" onClick={() => document.getElementById('close-fisf-died')?.closest('form')?.submit()}>
                                     Cancel
                                 </button>
                                 <button className="btn btn-primary">

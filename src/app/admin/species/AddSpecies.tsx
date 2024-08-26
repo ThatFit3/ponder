@@ -35,7 +35,7 @@ function AddSpecies() {
                 pH: 0,
                 DO: 0
             })
-            document.getElementById('close-form')?.submit()
+            document.getElementById('close-form')?.closest('form')?.submit()
         } catch (e: any) {
             console.error(e.message);
         }
@@ -84,7 +84,7 @@ function AddSpecies() {
                             </div>
                             <div className="flex gap-4 mt-2 flex-row-reverse">
                                 <button className="btn btn-primary">Submit</button>
-                                <button className="btn" type="button" onClick={() => document.getElementById('close-form')?.submit()}>
+                                <button className="btn" type="button" onClick={() => document.getElementById('close-form')?.closest('form')?.submit()}>
                                     Cancel
                                 </button>
                             </div>

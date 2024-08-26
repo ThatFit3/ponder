@@ -20,7 +20,7 @@ function EditDeleteSpecies({ ogSpecie }: { ogSpecie: Species }) {
 
 
     const closeEditForm = () => {
-        document.getElementById(`close-edit-${species.id}`)?.submit()
+        document.getElementById(`close-edit-${species.id}`)?.closest('form')?.submit()
         setSpecies(ogSpecie)
     }
 
@@ -46,7 +46,7 @@ function EditDeleteSpecies({ ogSpecie }: { ogSpecie: Species }) {
                 DO: species.DO,
             })
             toast.success('Species edited', { description: `Species ${species.name} edited` })
-            document.getElementById(`close-edit-${species.id}`)?.submit()
+            document.getElementById(`close-edit-${species.id}`)?.closest('form')?.submit()
         } catch (e: any) {
             console.error(e.message);
         }

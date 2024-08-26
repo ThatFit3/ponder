@@ -95,7 +95,7 @@ function HarvestRecord({ pond }: { pond: any }) {
                             </table>
                         </div>
                     </div>
-                    <button className="btn" onClick={() => document.getElementById('close-records').submit()}>Close</button>
+                    <button className="btn" onClick={() => document.getElementById('close-records')?.closest('form')?.submit()}>Close</button>
                 </div>
                 <form method="dialog" className="modal-backdrop" id="close-records">
                     <button>close</button>

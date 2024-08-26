@@ -32,7 +32,7 @@ function ConfigSettings() {
         try {
             await setDoc(doc(db, "configs", "token"), { value: config.token })
             await setDoc(doc(db, "configs", "refreshRate"), { value: parseInt(config.refreshRate) })
-            document.getElementById('close-config-form')?.submit()
+            document.getElementById('close-config-form')?.closest('form')?.submit()
             toast.success("Config updated")
         } catch (e: any) {
             console.error(e.message)
@@ -56,7 +56,7 @@ function ConfigSettings() {
                             <input type="number" name="name" placeholder="Refresh rate" className="input input-bordered w-full mt-2" value={config.refreshRate} onChange={(e) => setConfig({ ...config, refreshRate: e.target.value })} />
                         </div>
                         <div className="flex justify-end gap-3">
-                            <button className="btn" type="button" onClick={() => document.getElementById('close-config-form')?.submit()}>
+                            <button className="btn" type="button" onClick={() => document.getElementById('close-config-form')?.closest('form')?.submit()}>
                                 Cancel
                             </button>
                             <button className="btn btn-primary">

@@ -54,7 +54,7 @@ function EditDeletePond({ pond }: { pond: any }) {
                 router.push('/admin/ponds')
             }
             toast.success('Pond Deleted', { description: `Pond '${pond.name}' deleted` })
-            document.getElementById(`close-delete-${pond.id}`)?.submit()
+            document.getElementById(`close-delete-${pond.id}`)?.closest('form')?.submit()
         } catch (e: any) {
             console.error(e.message);
         }
@@ -62,7 +62,7 @@ function EditDeletePond({ pond }: { pond: any }) {
 
     const closeEditForm = () => {
         setEditPond({ Species: pond.Species, name: pond.name, API: pond.API, capacity: pond.capacity })
-        document.getElementById(`close-edit-pond-${pond.id}`)?.submit()
+        document.getElementById(`close-edit-pond-${pond.id}`)?.closest('form')?.submit()
     }
 
     const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -70,7 +70,7 @@ function EditDeletePond({ pond }: { pond: any }) {
         let pondRef = doc(db, 'ponds', pond.id)
         try {
             setDoc(pondRef, editPond, { merge: true })
-            document.getElementById(`close-edit-pond-${pond.id}`)?.submit()
+            document.getElementById(`close-edit-pond-${pond.id}`)?.closest('form')?.submit()
             toast.success("Pond edited", { description: `Pond '${pond.name}' edited successfully` })
         } catch (e: any) {
             console.error(e.message);

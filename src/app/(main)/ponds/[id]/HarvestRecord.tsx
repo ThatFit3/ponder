@@ -32,7 +32,7 @@ function HarvestRecord({ pond }: { pond: any }) {
             <div className="col-span-3 w-full bg-base-300 rounded-md h-full p-4">
                 <div className="flex justify-between items-center px-2 mb-3">
                     <p className="font-bold text-lg">Recent record(s)</p>
-                    <button className="btn btn-ghost btn-sm" onClick={() => document.getElementById("see-records").showModal()}>See all &gt;</button>
+                    <button className="btn btn-ghost btn-sm" onClick={() => document.getElementById("see-records")?.showModal()}>See all &gt;</button>
                 </div>
                 <div className="overflow-x-auto border border-base-200 rounded-md">
                     <table className="table ">
@@ -95,7 +95,7 @@ function HarvestRecord({ pond }: { pond: any }) {
                             </table>
                         </div>
                     </div>
-                    <button className="btn" onClick={() => document.getElementById('close-records').submit()}>Close</button>
+                    <button className="btn" onClick={() => document.getElementById('close-records')?.closest('form')?.submit()}>Close</button>
                 </div>
                 <form method="dialog" className="modal-backdrop" id="close-records">
                     <button>close</button>

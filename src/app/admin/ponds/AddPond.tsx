@@ -32,7 +32,7 @@ function AddPond({ speciesList }: { speciesList: any }) {
                 API: "",
                 isActive: false,
             })
-            document.getElementById('close-form')?.submit()
+            document.getElementById('close-form')?.closest('form')?.submit()
         } catch (e: any) {
             console.error(e.message);
 
@@ -68,7 +68,7 @@ function AddPond({ speciesList }: { speciesList: any }) {
                         </div>
                         <div className="flex gap-4 mt-4 flex-row-reverse">
                             <button className="btn btn-primary">Submit</button>
-                            <button className="btn" type="button" onClick={() => document.getElementById('close-form')?.submit()}>
+                            <button className="btn" type="button" onClick={() => document.getElementById('close-form')?.closest('form')?.submit()}>
                                 Cancel
                             </button>
                         </div>

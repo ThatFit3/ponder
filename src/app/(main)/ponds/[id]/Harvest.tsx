@@ -18,7 +18,7 @@ function Harvest({ pond }: { pond: any }) {
                 lastFed: deleteField()
             })
 
-            document.getElementById('close-harvest')?.submit()
+            document.getElementById('close-harvest')?.closest('form')?.submit()
 
             toast.success("Pond harvested", { description: `${pond.name} harvest recorded` })
         } catch (e: any) {
