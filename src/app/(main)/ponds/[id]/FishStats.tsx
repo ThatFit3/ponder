@@ -52,7 +52,7 @@ function FishStats({ pond }: { pond: any }) {
     return (
         (!pond.isActive ? (
             <>
-                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => (document.getElementById('my_modal_4') as HTMLDialogElement).showModal()}>
+                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => (document.getElementById('fish-in') as HTMLDialogElement).showModal()}>
                     <p className="font-bold text-lg">Activate pond?</p >
                 </button >
 

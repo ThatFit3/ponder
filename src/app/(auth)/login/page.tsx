@@ -38,6 +38,7 @@ function SignUp() {
         e.preventDefault()
         try {
             const res = await signInWithEmailAndPassword(email, password)
+            console.log({ res })
             setEmail('')
             setPassword('')
 
