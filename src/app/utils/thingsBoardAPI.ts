@@ -1,26 +1,18 @@
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import axios from "axios";
 import { db } from "../firebase/config";
 
-let cachedToken: any = null;
-
-const listenForTokenUpdates = () => {
-    const tokenDocRef = doc(db, "configs", "token");
-
-    onSnapshot(tokenDocRef, (docSnapshot) => {
-        if (docSnapshot.exists()) {
-            cachedToken = docSnapshot.data()?.value;
-        } else {
-            cachedToken = null;
-            console.error("Token document not found.");
-        }
-    });
+const getToken = async (): Promise<string | undefined> => {
+    const tokenDoc = await getDoc(doc(db, "configs", "token"));
+    return tokenDoc.exists() ? tokenDoc.data()?.value : undefined;
 }
-    
-listenForTokenUpdates();
 
 export const getData = async (accessKey: string) => {
-    const token = cachedToken;
+    const token = await getToken();
+
+    if (!token) {
+        throw new Error("Token not found.");
+    }
 
     const res = await axios.get(`https://demo.thingsboard.io/api/plugins/telemetry/DEVICE/${accessKey}/values/timeseries?keys=temperature,pH,DO`, {
         headers: {
@@ -30,4 +22,3 @@ export const getData = async (accessKey: string) => {
     });
     return res.data;
 }
-
