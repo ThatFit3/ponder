@@ -15,6 +15,11 @@ export const loginUser = async(userId: string) => {
     if(userData){
         cookies().set('role', userData.role)
     }
+    let role = cookies().get('role')?.value
+    if (isAdmin()) {
+        return redirect("/admin")
+    }
+    return redirect("/")
 }
 
 export const userLoggedIn = () => {

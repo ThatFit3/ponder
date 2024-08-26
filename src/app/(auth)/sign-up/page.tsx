@@ -70,8 +70,6 @@ function SignUp() {
         setEmail('');
         setPassword('');
         setUsername('');
-
-        router.push('/');
     }
 
     return (

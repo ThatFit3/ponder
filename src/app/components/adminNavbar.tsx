@@ -58,7 +58,6 @@ const AdminNavbar = () => {
                                     <li className="text-[#bf0a0d]"><Link href={"/"} onClick={() => {
                                         signOut(auth)
                                         clearToken()
-                                        router.push('/')
                                     }}>Logout</Link></li>
                                 </ul>
                             </li>

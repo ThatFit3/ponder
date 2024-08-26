@@ -32,7 +32,7 @@ function LastFed({ pond }: { pond: any }) {
 
             <dialog id="last-fed" className="modal">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Mark this time as last fed?</h3>
+                    <h3 className="font-bold text-lg">Mark the currnet time as last fed?</h3>
                     <div className="flex justify-end gap-3">
                         <button className="btn" type="button" onClick={() => document.getElementById('close-last-fed')?.closest('form')?.submit()}>
                             Cancel

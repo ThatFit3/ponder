@@ -37,7 +37,6 @@ const Navbar = () => {
                                     tabIndex={0}
                                     className="menu menu-sm dropdown-content bg-[#002630] rounded-box z-[1] mt-3 w-52 p-2 shadow">
                                     <li className="text-red-900"><Link href={"/"} onClick={() => {
-
                                         signOut(auth)
                                         clearToken()
                                     }}>Logout</Link></li>

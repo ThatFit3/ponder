@@ -24,7 +24,6 @@ function SignUp() {
             if (currentUser) {
                 loginUser(currentUser.uid)
             }
-            router.push('/');
         } catch (e: unknown) {
             if (e instanceof Error) {
                 console.error(e.message);
@@ -46,8 +45,6 @@ function SignUp() {
             if (currentUser) {
                 loginUser(currentUser.uid)
             }
-
-            router.push('/')
         } catch (e: unknown) {
             if (e instanceof Error) {
                 console.error(e.message);
