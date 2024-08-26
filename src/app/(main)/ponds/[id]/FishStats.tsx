@@ -2,10 +2,12 @@ import React, { useState } from "react"
 import { addDoc, setDoc, doc, collection, serverTimestamp } from "firebase/firestore"
 import { db } from "@/app/firebase/config"
 import { toast } from "sonner"
+import { } from "daisyui/"
 
 function FishStats({ pond }: { pond: any }) {
     const [insertFish, setInsertFish] = useState<number>(0)
     const [fishDied, setFishDied] = useState<number>(0)
+
 
     const handleInsertFish = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -50,7 +52,7 @@ function FishStats({ pond }: { pond: any }) {
     return (
         (!pond.isActive ? (
             <>
-                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => document.getElementById("fish-in")?.showModal()}>
+                <button className="col-span-2 bg- rounded-md p-5 btn btn-accent h-full w-full" onClick={() => (document.getElementById('my_modal_4') as HTMLDialogElement).showModal()}>
                     <p className="font-bold text-lg">Activate pond?</p >
                 </button >
 
@@ -88,7 +90,7 @@ function FishStats({ pond }: { pond: any }) {
                     </div>
                 </div >
                 <div className="col-span-1 bg-error rounded-md p-3">
-                    <button className="btn btn-ghost h-full w-full text-center" onClick={() => document.getElementById('fisf-died')?.showModal()}>
+                    <button className="btn btn-ghost h-full w-full text-center" onClick={() => (document.getElementById('fisf-died') as HTMLDialogElement).showModal()}>
                         <div>
                             <p className="font-bold text-lg">Died:</p>
                             <p className="text-lg">{pond.record.died}</p>

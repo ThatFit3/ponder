@@ -80,8 +80,8 @@ function EditDeletePond({ pond }: { pond: any }) {
     return (
         <>
             <div className="flex gap-2">
-                <button className="btn btn-ghost aspect-square" onClick={() => { document.getElementById(`edit-pond-${pond.id}`).showModal() }}><SettingFilled className="text-2xl" /></button>
-                <button className="btn btn-ghost aspect-square" onClick={() => { document.getElementById(`delete-pond-${pond.id}`).showModal() }}><DeleteFilled className="text-error text-2xl" /></button>
+                <button className="btn btn-ghost aspect-square" onClick={() => { (document.getElementById(`edit-pond-${pond.id}`) as HTMLDialogElement).showModal() }}><SettingFilled className="text-2xl" /></button>
+                <button className="btn btn-ghost aspect-square" onClick={() => { (document.getElementById(`delete-pond-${pond.id}`) as HTMLDialogElement).showModal() }}><DeleteFilled className="text-error text-2xl" /></button>
             </div>
 
             <dialog id={`delete-pond-${pond.id}`} className="modal">
@@ -95,9 +95,9 @@ function EditDeletePond({ pond }: { pond: any }) {
                     </div>
                 </div>
             </dialog>
-            <dialog id={`edit-pond-${pond.id}`} className="modal" onSubmit={handleEdit}>
+            <dialog id={`edit-pond-${pond.id}`} className="modal" >
                 <div className="modal-box">
-                    <form method="POST">
+                    <form method="POST" onSubmit={handleEdit}>
                         <div className="my-2">
                             <p>Pond name</p>
                             <input type="text" name="name" placeholder="Pond name" className="input input-bordered w-full mt-2" onChange={onChange} value={editPond.name} />

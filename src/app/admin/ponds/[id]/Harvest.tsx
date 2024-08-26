@@ -28,7 +28,7 @@ function Harvest({ pond }: { pond: any }) {
 
     return (
         <>
-            <button className="btn btn-ghost aspect-square" onClick={() => document.getElementById("harvest-pond")?.showModal()}><CheckCircleFilled className="text-2xl text-success" /></button>
+            <button className="btn btn-ghost aspect-square" onClick={() => (document.getElementById("harvest-pond") as HTMLDialogElement).showModal()}><CheckCircleFilled className="text-2xl text-success" /></button >
             <dialog id={`harvest-pond`} className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Are you sure the pond are ready to be harvest?</h3>

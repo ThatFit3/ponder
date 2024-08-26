@@ -55,9 +55,9 @@ function EditDeleteSpecies({ ogSpecie }: { ogSpecie: Species }) {
     return (
         <>
             <div className="flex gap-1 items-center">
-                <button className="btn btn-error btn-sm" onClick={() => document.getElementById(`delete-species-${species.id}`).showModal()}>Delete</button>
+                <button className="btn btn-error btn-sm" onClick={() => (document.getElementById(`delete-species-${species.id}`) as HTMLDialogElement).showModal()}>Delete</button>
                 <p className="text-3xl font-light">/</p>
-                <button className="btn btn-warning btn-sm" onClick={() => document.getElementById(`edit-species-${species.id}`).showModal()}>Edit</button>
+                <button className="btn btn-warning btn-sm" onClick={() => (document.getElementById(`edit-species-${species.id}`) as HTMLDialogElement).showModal()}>Edit</button>
             </div>
 
             <dialog id={`delete-species-${species.id}`} className="modal">

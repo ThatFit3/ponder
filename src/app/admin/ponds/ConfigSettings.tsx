@@ -41,7 +41,7 @@ function ConfigSettings() {
 
     return (
         <>
-            <button className="btn aspect-square p-0" onClick={() => document.getElementById('config-setting')?.showModal()}><SettingFilled /></button>
+            <button className="btn aspect-square p-0" onClick={() => (document.getElementById('config-setting') as HTMLDialogElement).showModal()}><SettingFilled /></button>
 
             <dialog id="config-setting" className="modal">
                 <div className="modal-box">

@@ -44,8 +44,7 @@ function AddSpecies() {
     return (
         <div className="w-full flex justify-center mt-6 mb-3">
             <div className="w-[70%] flex">
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button className="btn w-fit" onClick={() => document.getElementById('add-species')?.showModal()} >Add species</button>
+                <button className="btn w-fit" onClick={() => (document.getElementById('add-species') as HTMLDialogElement).showModal()} >Add species</button>
                 <dialog id="add-species" className="modal">
                     <div className="modal-box">
                         <form onSubmit={onSubmit} method="POST">

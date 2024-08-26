@@ -23,7 +23,7 @@ function LastFed({ pond }: { pond: any }) {
 
     return (
         <>
-            <button className="btn btn-ghost p-2 h-full w-full text-center" onClick={() => document.getElementById('last-fed').showModal()}>
+            <button className="btn btn-ghost p-2 h-full w-full text-center" onClick={() => (document.getElementById('last-fed') as HTMLDialogElement).showModal()}>
                 <div>
                     <p className="font-bold text-lg">Last Fed:</p>
                     <p className="text-lg">{pond.lastFed ? moment(pond.lastFed.toDate()).format('h : mm a') : "-- : --"}</p>

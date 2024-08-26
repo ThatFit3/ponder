@@ -41,7 +41,7 @@ function AddPond({ speciesList }: { speciesList: any }) {
 
     return (
         <>
-            <button className="btn w-fit" onClick={() => document.getElementById('add-pond')?.showModal()}>Add a Pond</button>
+            <button className="btn w-fit" onClick={() => (document.getElementById('add-pond') as HTMLDialogElement).showModal()}>Add a Pond</button>
             <dialog id="add-pond" className="modal">
                 <div className="modal-box">
                     <form method="POST" onSubmit={onSubmit}>
