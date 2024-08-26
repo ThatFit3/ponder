@@ -37,10 +37,9 @@ function IotFeeds({ pond }: { pond: any }) {
                         setpHStatus("bg-error")
                     }
 
-                    if (data.DO[0].value > (pond.species.DO - 1) && data.DO[0].value < (pond.species.DO + 1)) {
+
+                    if (data.DO[0].value > pond.species.DO) {
                         setDOStatus("bg-success")
-                    } else if (data.DO[0].value > (pond.species.DO - 2) && data.DO[0].value < (pond.species.DO + 2)) {
-                        setDOStatus("bg-warning")
                     } else {
                         setDOStatus("bg-error")
                     }
@@ -55,7 +54,7 @@ function IotFeeds({ pond }: { pond: any }) {
         <>
             <div className={`w-full ${tempStatus} p-4 flex flex-col items-center justify-center`}>
                 <p className="text-lg font-bold">Temperature:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!tempFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{tempFeed[0].value} °C</p>
                     )}
@@ -63,7 +62,7 @@ function IotFeeds({ pond }: { pond: any }) {
             </div>
             <div className={`w-full ${pHStatus} p-4 flex flex-col items-center justify-center`}>
                 <p className="text-lg font-bold">pH:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!pHFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{pHFeed[0].value}</p>
                     )}
@@ -71,7 +70,7 @@ function IotFeeds({ pond }: { pond: any }) {
             </div>
             <div className={`w-full ${DOStatus} p-4 flex flex-col items-center justify-center`}>
                 <p className="text-lg font-bold">DO:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!DOFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{DOFeed[0].value}</p>
                     )}

@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
+import { redirect } from "next/navigation";
 
 export const loginUser = async(userId: string) => {
     cookies().set('token', userId)
@@ -21,9 +22,10 @@ export const userLoggedIn = () => {
     return result
 }
 
-export const clearToken = () => {
+export const clearToken = async() => {
     cookies().delete('token')
     cookies().delete('role')
+    return redirect("/")
 }
 
 export const isAdmin = () => {

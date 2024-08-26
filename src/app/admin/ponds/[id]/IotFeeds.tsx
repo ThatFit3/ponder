@@ -37,10 +37,8 @@ function IotFeeds({ pond }: { pond: any }) {
                         setpHStatus("bg-error")
                     }
 
-                    if (data.DO[0].value > (pond.species.DO - 1) && data.DO[0].value < (pond.species.DO + 1)) {
+                    if (data.DO[0].value > pond.species.DO) {
                         setDOStatus("bg-success")
-                    } else if (data.DO[0].value > (pond.species.DO - 2) && data.DO[0].value < (pond.species.DO + 2)) {
-                        setDOStatus("bg-warning")
                     } else {
                         setDOStatus("bg-error")
                     }

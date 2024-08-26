@@ -38,10 +38,8 @@ function IoTMainDisplay({ pond }: { pond: any }) {
                         setpHStatus("progress-error")
                     }
 
-                    if (data.DO[0].value > (pond.species.DO - 1) && data.DO[0].value < (pond.species.DO + 1)) {
+                    if (data.DO[0].value > pond.species.DO) {
                         setDOStatus("progress-success")
-                    } else if (data.DO[0].value > (pond.species.DO - 2) && data.DO[0].value < (pond.species.DO + 2)) {
-                        setDOStatus("progress-warning")
                     } else {
                         setDOStatus("progress-error")
                     }
