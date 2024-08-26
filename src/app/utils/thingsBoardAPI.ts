@@ -22,7 +22,7 @@ listenForTokenUpdates();
 export const getData = async (accessKey: string) => {
     const token = cachedToken;
 
-    const res = await axios.get(`https://demo.thingsboard.io/api/plugins/telemetry/DEVICE/${accessKey}/values/timeseries?keys=temperature`, {
+    const res = await axios.get(`https://demo.thingsboard.io/api/plugins/telemetry/DEVICE/${accessKey}/values/timeseries?keys=temperature,pH,DO`, {
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': token
