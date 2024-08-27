@@ -26,12 +26,10 @@ git clone https://github.com/ThatFit3/ponder.git
 
 > [!NOTE]
 > format:
-
 > NEXT_PUBLIC_FIREBASE_{variable name in all caps}
 
 > [!NOTE]
 > example: 
-
 > NEXT_PUBLIC_FIREBASE_API_KEY = apiKey variable
 
 ## Run
