@@ -43,7 +43,7 @@ function AddSpecies() {
 
     return (
         <div className="w-full flex justify-center mt-6 mb-3">
-            <div className="w-[70%] flex">
+            <div className="w-[95%] md:w-[80%] flex">
                 <button className="btn w-fit" onClick={() => (document.getElementById('add-species') as HTMLDialogElement).showModal()} >Add species</button>
                 <dialog id="add-species" className="modal">
                     <div className="modal-box">
