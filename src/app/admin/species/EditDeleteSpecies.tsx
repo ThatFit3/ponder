@@ -1,6 +1,6 @@
 "use client"
 
-import { deleteDoc, doc, setDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "@/app/firebase/config"
 import React, { useState } from "react"
 import { toast } from "sonner"
@@ -25,11 +25,20 @@ function EditDeleteSpecies({ ogSpecie }: { ogSpecie: Species }) {
     }
 
     const handleDelete = async () => {
-        try {
-            await deleteDoc(doc(db, "species", species.id))
-            toast.success('Species Deleted', { description: `Species ${species.name} deleted` })
-        } catch (e: any) {
-            console.error(e.message);
+        let ref = collection(db, "ponds")
+        let q = query(ref, where("Species", "==", species.id))
+        let speciesIsRefed = await getDocs(q)
+        console.log(speciesIsRefed)
+
+        if (speciesIsRefed.empty) {
+            try {
+                await deleteDoc(doc(db, "species", species.id))
+                toast.success('Species Deleted', { description: `Species ${species.name} deleted` })
+            } catch (e: any) {
+                console.error(e.message);
+            }
+        } else {
+            toast.warning("Can't delete the species", { description: `Species ${species.name} can't be deleted because it was referenced` })
         }
     }
 

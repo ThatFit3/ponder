@@ -101,8 +101,8 @@ function FishStats({ pond }: { pond: any }) {
                         <h3 className="font-bold text-lg">How many fish died?</h3>
                         <form method="POST" onSubmit={handleFishDied}>
                             <div className="grid grid-cols-5 gap-2 mt-2">
-                                <input type="number" className="input input-bordered w-full" required min={0} max={pond.record.inserted} value={fishDied} onChange={(e) => setFishDied(parseInt(e.target.value))} />
-                                <div className="flex items-center w-full col-span-4 gap-2">
+                                <input type="number" className="input input-bordered w-full max-w-24 col-span-5 md:col-span-1" required min={0} max={pond.record.inserted} value={fishDied} onChange={(e) => setFishDied(parseInt(e.target.value))} />
+                                <div className="flex items-center w-full col-span-5  md:col-span-4 gap-2">
                                     <button className="btn btn-sm aspect-square rounded-full" type="button" onClick={(e) => setFishDied(fishDied - 1)}>-</button>
                                     <input type="range" min={0} max={pond.record.inserted - pond.record.died} value={fishDied} className="range" onChange={(e) => setFishDied(parseInt(e.target.value))} />
                                     <button className="btn btn-sm aspect-square rounded-full" type="button" onClick={(e) => setFishDied(fishDied + 1)}>+</button>

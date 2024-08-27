@@ -75,8 +75,8 @@ function Ponds() {
     }, []);
 
     return (
-        <div className="flex w-full justify-center py-6">
-            <div className="w-[70%] flex flex-col gap-4">
+        <div className="flex w-full justify-center p-0 md:py-6">
+            <div className="w-full p-3 md:w-[70%] flex flex-col gap-4">
                 <div className="flex gap-2">
                     <AddPond speciesList={speciesList} /><ConfigSettings />
                 </div>
@@ -89,7 +89,7 @@ function Ponds() {
                     <>
                         {ponds.map((pond: any) => (
                             <div className="w-full grid grid-cols-1 md:grid-cols-6 bg-base-300 p-3 rounded-md gap-2" key={pond.id}>
-                                <div className="rounded-md bg-base-200 p-4 col-span-1 flex flex-col justify-center text-wrap">
+                                <div className="rounded-md bg-base-200 p-4 col-span-1 md:flex flex-col justify-center text-wrap hidden">
                                     <p className="font-bold text-lg">
                                         {pond.name}
                                     </p>
@@ -97,9 +97,22 @@ function Ponds() {
                                         status: {pond.isActive ? <span className="font-bold text-success">Active</span> : <span className="font-bold text-warning">Idle</span>}
                                     </p>
                                 </div>
-                                <div className="col-span-1 md:col-span-5 bg-base-200 rounded-md p-4 flex items-center justify-between">
-                                    <Link href={`./ponds/${pond.id}`} className="flex btn-ghost p-2 rounded-md justify-between w-full items-center">
-                                        <div className="hidden md:block">
+                                <Link href={`./ponds/${pond.id}`} className="md:hidden flex btn-ghost p-4 justify-between w-full items-center rounded-md bg-base-200">
+                                    <div className="col-span-1 flex flex-col justify-center text-wrap">
+                                        <p className="font-bold text-lg">
+                                            {pond.name}
+                                        </p>
+                                        <p>
+                                            status: {pond.isActive ? <span className="font-bold text-success">Active</span> : <span className="font-bold text-warning">Idle</span>}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <CaretRightFilled />
+                                    </div>
+                                </Link>
+                                <div className="col-span-1 md:col-span-5 bg-base-200 rounded-md p-4 flex items-center justify-between gap-3">
+                                    <Link href={`./ponds/${pond.id}`} className="hidden md:flex btn-ghost p-2 rounded-md justify-between w-full items-center">
+                                        <div>
                                             <p className="font-bold">Species: <span className="font-normal">{pond.species.name}</span></p>
                                             <p className="font-bold">Capacity: <span className="font-normal">{pond.capacity}</span></p>
                                         </div>
@@ -107,7 +120,10 @@ function Ponds() {
                                             Details<CaretRightFilled />
                                         </div>
                                     </Link>
-
+                                    <div className="block md:hidden">
+                                        <p className="font-bold">Species: <span className="font-normal">{pond.species.name}</span></p>
+                                        <p className="font-bold">Capacity: <span className="font-normal">{pond.capacity}</span></p>
+                                    </div>
                                     <EditDeletePond pond={pond} />
                                 </div>
                             </div>

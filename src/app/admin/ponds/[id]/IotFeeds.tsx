@@ -51,25 +51,25 @@ function IotFeeds({ pond }: { pond: any }) {
 
     return (
         <>
-            <div className={`w-full ${tempStatus} p-4 flex flex-col items-center justify-center`}>
-                <p className="text-lg font-bold">Temperature:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+            <div className={`w-full ${tempStatus} p-4 flex flex-col items-center justify-center rounded-lg`}>
+                <p className="text-lg font-bold">Temp:</p>
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!tempFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{tempFeed[0].value} °C</p>
                     )}
                 </div>
             </div>
-            <div className={`w-full ${pHStatus} p-4 flex flex-col items-center justify-center`}>
+            <div className={`w-full ${pHStatus} p-4 flex flex-col items-center justify-center rounded-lg`}>
                 <p className="text-lg font-bold">pH:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!pHFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{pHFeed[0].value}</p>
                     )}
                 </div>
             </div>
-            <div className={`w-full ${DOStatus} p-4 flex flex-col items-center justify-center`}>
+            <div className={`w-full ${DOStatus} p-4 flex flex-col items-center justify-center rounded-lg`}>
                 <p className="text-lg font-bold">DO:</p>
-                <div className="flex items-center justify-center w-fit h-fit aspect-square">
+                <div className="flex items-center justify-center w-fit h-fit my-5">
                     {!DOFeed || !pond.isActive ? <p className="text-xl md:text-4xl">-- °C</p> : (
                         <p className="text-xl md:text-4xl">{DOFeed[0].value}</p>
                     )}

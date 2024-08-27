@@ -64,24 +64,24 @@ function PondDetails({ params: { id } }: { params: any }) {
                 <h1 className="text-xl">Please Hold on</h1>
             </div>
         ) : (
-            <div className="p-8 px-12">
+            <div className="p-6">
                 <div className="w-full bg-base-200 p-5 rounded-md flex items-center justify-between">
-                    <button className="btn text-2xl font-semibold btn-ghost ps-0" onClick={() => router.push('/admin/ponds')}>
-                        <CaretLeftFilled className="text-4xl" />{pond.name} ({pond.isActive ? <span className="font-normal text-success">Active</span> : <span className="font-normal text-warning">Idle</span>})
+                    <button className="btn text-lg md:text-2xl font-semibold btn-ghost ps-0" onClick={() => router.push('/admin/ponds')}>
+                        <CaretLeftFilled className="text-xl md:text-4xl" />{pond.name} ({pond.isActive ? <span className="font-normal text-success">Active</span> : <span className="font-normal text-warning">Idle</span>})
                     </button>
-                    <div className="flex gap-2">
+                    <div className="hidden md:flex gap-2">
                         {pond.isActive ? (
                             <Harvest pond={pond} />
                         ) : ""}
                         <EditDeletePond pond={pond} />
                     </div>
                 </div>
-                <div className="grid grid-cols-3 md:grid-cols-6 mt-4 gap-4">
-                    <div className="col-span-3 bg-base-200 rounded-md p-5">
+                <div className="grid grid-cols-2 md:grid-cols-6 mt-4 gap-4">
+                    <div className="col-span-2 md:col-span-3 bg-base-200 rounded-md p-5">
                         <p className="font-bold text-lg">Species: <span className="font-normal tooltip" data-tip={`temperature: ${pond.species.temperature}, ph: ${pond.species.pH}, DO: ${pond.species.DO}`}>{pond.species.name}</span></p>
                         <p className="font-bold text-lg">Capacity: <span className="font-normal">{pond.capacity}</span></p>
                     </div>
-                    <div className="col-span-1 bg-base-200 rounded-md p-3">
+                    <div className="col-span-2 md:col-span-1 bg-base-200 rounded-md p-3">
                         <LastFed pond={pond} />
                     </div>
                     <FishStats pond={pond} />
